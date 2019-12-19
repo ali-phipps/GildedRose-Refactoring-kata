@@ -17,6 +17,13 @@ describe GildedRose do
       rose = GildedRose.new(items)
       expect(rose.special_item?(items[0])).to be true
     end
+
+    it 'item is backstage pass' do
+      items = [Item.new('Backstage passes to a TAFKAL80ETC concert', 10, 20)]
+      rose = GildedRose.new(items)
+      expect(rose.special_item?(items[0])).to be true
+    end
+
     it 'basic item is not special' do
       items = [Item.new('not special', 10, 20)]
       rose = GildedRose.new(items)
