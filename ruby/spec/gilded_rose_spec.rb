@@ -5,7 +5,7 @@ require 'gilded_rose'
 describe GildedRose do
   # subject(:rose) {GildedRose.new(items)}
 
-  describe '#basic_item' do
+  context '#basic_item' do
     it 'days remaining greater than sellin decreases qty and sellin by 1' do
       items = [Item.new('+5 Dexterity Vest', 10, 20)]
       GildedRose.new(items).update_quality
@@ -25,7 +25,7 @@ describe GildedRose do
     end
   end
 
-  describe '#aged_brie' do
+  context '#aged_brie' do
     it ' brie increases quality the older it gets' do
       items = [Item.new('Aged Brie', 5, 1)]
       GildedRose.new(items).update_quality
