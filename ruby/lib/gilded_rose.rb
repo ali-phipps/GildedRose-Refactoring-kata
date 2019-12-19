@@ -6,14 +6,14 @@ class GildedRose
 
   def update_quality
     @items.each do |item|
-      if special_item?(item)
-        if (item.name == 'Aged Brie')
-          update_aged_brie(item)
-        elsif (item.name =='Backstage passes to a TAFKAL80ETC concert')
-          update_backstage_pass(item)
-        elsif (item.name =='Conjured')
-          update_conjured(item)
-        end
+      case item.name
+      when 'Aged Brie'
+        update_aged_brie(item)
+      when 'Backstage passes to a TAFKAL80ETC concert'
+        update_backstage_pass(item)
+      when 'Conjured'
+        update_conjured(item)
+      when "Sulfuras, Hand of Ragnaros"
       else
         update_basic_item(item)
       end
@@ -22,12 +22,6 @@ class GildedRose
   end
 
   private
-  def special_item?(item)
-    item.name == ("Aged Brie") or
-    item.name == ("Sulfuras, Hand of Ragnaros") or
-    item.name == ('Backstage passes to a TAFKAL80ETC concert') or
-    item.name == ('Conjured')
-  end
 
   def update_sell_in(item)
     item.sell_in -= 1
