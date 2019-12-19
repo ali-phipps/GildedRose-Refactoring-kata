@@ -4,6 +4,19 @@ require 'gilded_rose'
 
 describe GildedRose do
   # subject(:rose) {GildedRose.new(items)}
+
+  describe '#special_item?' do
+    it 'item is aged brie' do
+      items = [Item.new('Aged Brie', 10, 20)]
+      rose = GildedRose.new(items)
+      expect(rose.special_item?(items[0])).to be true
+    end
+    it 'basic item is not special' do
+      items = [Item.new('not special', 10, 20)]
+      rose = GildedRose.new(items)
+      expect(rose.special_item?(items[0])).to be false
+    end
+  end
   describe '#basic_item' do
     it 'days remaining greater than sellin decreases qty and sellin by 1' do
       items = [Item.new('+5 Dexterity Vest', 10, 20)]
