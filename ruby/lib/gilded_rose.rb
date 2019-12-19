@@ -21,9 +21,8 @@ class GildedRose
       update_backstage_pass(item)
     when 'Conjured'
       update_conjured(item)
-    when "Sulfuras, Hand of Ragnaros"
     else
-      update_basic_item(item)
+      update_basic_item(item) unless item.name == "Sulfuras, Hand of Ragnaros"
     end
   end
 
