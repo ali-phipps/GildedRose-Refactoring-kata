@@ -50,7 +50,11 @@ class GildedRose
   def update_aged_brie(item)
     return unless item.quality < 50
 
-    item.quality += if item.sell_in <= 0
+    item.quality += sell_in_amount(item.sell_in)
+  end
+
+  def sell_in_amount(sell_in)
+    if item.sell_in <= 0
                       2
                     else
                       1
