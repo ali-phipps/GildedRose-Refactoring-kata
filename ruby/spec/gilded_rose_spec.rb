@@ -46,9 +46,9 @@ describe GildedRose do
 
   describe '#Sulfuras' do
     it "doesn't change its quantity" do
-      items = [Item.new('Sulfuras, Hand of Ragnaros', 0, 10)]
+      items = [Item.new('Sulfuras, Hand of Ragnaros', 0, 80)]
       GildedRose.new(items).update_quality
-      expect(items[0].to_s).to eq 'Sulfuras, Hand of Ragnaros, 0, 10'
+      expect(items[0].to_s).to eq 'Sulfuras, Hand of Ragnaros, 0, 80'
     end
   end
 
