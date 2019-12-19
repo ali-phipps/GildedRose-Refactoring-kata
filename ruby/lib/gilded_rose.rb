@@ -40,11 +40,7 @@ class GildedRose
   def update_basic_item(item)
     return unless item.quality.positive?
 
-    item.quality -= if item.sell_in <= 0
-                      2
-                    else
-                      1
-                    end
+    item.quality -= sell_in_amount(item.sell_in)
   end
 
   def update_aged_brie(item)
@@ -54,11 +50,7 @@ class GildedRose
   end
 
   def sell_in_amount(sell_in)
-    if item.sell_in <= 0
-                      2
-                    else
-                      1
-                    end
+    sell_in <= 0 ? 2 : 1
   end
 
   def update_backstage_pass(item)
