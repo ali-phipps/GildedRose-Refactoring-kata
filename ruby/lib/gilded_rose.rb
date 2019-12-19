@@ -11,6 +11,8 @@ class GildedRose
           update_aged_brie(item)
         elsif (item.name =='Backstage passes to a TAFKAL80ETC concert')
           update_backstage_pass(item)
+        elsif (item.name =='Conjured')
+          update_conjured(item)
         end
       else
         update_basic_item(item)
@@ -22,7 +24,15 @@ class GildedRose
   def special_item?(item)
     item.name == ("Aged Brie") or
     item.name == ("Sulfuras, Hand of Ragnaros") or
-    item.name == ('Backstage passes to a TAFKAL80ETC concert')
+    item.name == ('Backstage passes to a TAFKAL80ETC concert') or
+    item.name == ('Conjured')
+  end
+
+  def update_conjured(item)
+    if (item.quality > 0)
+      item.quality -= 2
+    end
+    item.sell_in -= 1
   end
 
   def update_basic_item(item)

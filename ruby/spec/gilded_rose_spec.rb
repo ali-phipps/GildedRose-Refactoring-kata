@@ -78,4 +78,18 @@ describe GildedRose do
       expect(items[0].to_s).to eq 'Backstage passes to a TAFKAL80ETC concert, -1, 0'
     end
   end
+
+  context 'Conjured item' do
+    it 'degrade in quality twice as fast as normal items' do
+      items = [Item.new('Conjured', 10, 10)]
+      GildedRose.new(items).update_quality
+      expect(items[0].to_s).to eq 'Conjured, 9, 8'
+    end
+
+    it 'qty cannot be less than 0' do
+      items = [Item.new('Conjured', 10, 0)]
+      GildedRose.new(items).update_quality
+      expect(items[0].to_s).to eq 'Conjured, 9, 0'
+    end
+  end
 end
