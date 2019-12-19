@@ -45,7 +45,7 @@ describe GildedRose do
     end
   end
 
-  describe '#Sulfuras' do
+  context '#Sulfuras' do
     it "doesn't change its quantity" do
       items = [Item.new('Sulfuras, Hand of Ragnaros', 0, 80)]
       GildedRose.new(items).update_quality
@@ -53,7 +53,7 @@ describe GildedRose do
     end
   end
 
-  describe '#back_stage_passes' do
+  context '#back_stage_passes' do
     it 'increase qty by 1 when there are more than 10 days left' do
       items = [Item.new('Backstage passes to a TAFKAL80ETC concert', 11, 10)]
       GildedRose.new(items).update_quality
