@@ -4,6 +4,21 @@ class GildedRose
     @items = items
   end
 
+  def update_quality
+    @items.each do |item|
+      if special_item?(item)
+        if (item.name == 'Aged Brie')
+          update_aged_brie(item)
+        elsif (item.name =='Backstage passes to a TAFKAL80ETC concert')
+          update_backstage_pass(item)
+        end
+      else
+        update_basic_item(item)
+      end
+    end
+  end
+
+  private
   def special_item?(item)
     item.name == ("Aged Brie") or
     item.name == ("Sulfuras, Hand of Ragnaros") or
@@ -45,19 +60,6 @@ class GildedRose
     item.sell_in -= 1
   end
 
-  def update_quality
-    @items.each do |item|
-      if special_item?(item)
-        if (item.name == 'Aged Brie')
-          update_aged_brie(item)
-        elsif (item.name =='Backstage passes to a TAFKAL80ETC concert')
-          update_backstage_pass(item)
-        end
-      else
-        update_basic_item(item)
-      end
-    end
-  end
 end
 
 class Item
