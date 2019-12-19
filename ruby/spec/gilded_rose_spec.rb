@@ -53,10 +53,28 @@ describe GildedRose do
   end
 
   describe '#back_stage_passes' do
-    it 'increase by 2 when there are 10 days left' do
+    it 'increase qty by 1 when there are more than 10 days left' do
+      items = [Item.new('Backstage passes to a TAFKAL80ETC concert', 11, 10)]
+      GildedRose.new(items).update_quality
+      expect(items[0].to_s).to eq 'Backstage passes to a TAFKAL80ETC concert, 10, 11'
+    end
+
+    it 'increase qty by 2 when there are 10 days left' do
       items = [Item.new('Backstage passes to a TAFKAL80ETC concert', 10, 10)]
       GildedRose.new(items).update_quality
       expect(items[0].to_s).to eq 'Backstage passes to a TAFKAL80ETC concert, 9, 12'
+    end
+
+    it 'increase qty by 3 when there are 5 days left' do
+      items = [Item.new('Backstage passes to a TAFKAL80ETC concert', 5, 10)]
+      GildedRose.new(items).update_quality
+      expect(items[0].to_s).to eq 'Backstage passes to a TAFKAL80ETC concert, 4, 13'
+    end
+
+    it 'qty set to 0  when there are 0 days left' do
+      items = [Item.new('Backstage passes to a TAFKAL80ETC concert', 0, 10)]
+      GildedRose.new(items).update_quality
+      expect(items[0].to_s).to eq 'Backstage passes to a TAFKAL80ETC concert, -1, 0'
     end
   end
 end
