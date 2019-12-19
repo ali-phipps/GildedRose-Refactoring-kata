@@ -11,6 +11,12 @@ describe GildedRose do
       rose = GildedRose.new(items)
       expect(rose.special_item?(items[0])).to be true
     end
+
+    it 'item is Sulfuras' do
+      items = [Item.new('Sulfuras, Hand of Ragnaros', 10, 20)]
+      rose = GildedRose.new(items)
+      expect(rose.special_item?(items[0])).to be true
+    end
     it 'basic item is not special' do
       items = [Item.new('not special', 10, 20)]
       rose = GildedRose.new(items)
